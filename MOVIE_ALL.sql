@@ -45,8 +45,23 @@ CREATE TABLE movie_director (
 	movie_id INT FOREIGN KEY REFERENCES movie(movie_id)
 )
 
+----REVIEWER TABLE
 CREATE TABLE reviewer (
 	reviewer_id INT IDENTITY(1,1) PRIMARY KEY,
 	reviewer_name CHAR(20)
 )
 
+----RATING_TABLE
+CREATE TABLE rating (
+	movie_id INT FOREIGN KEY REFERENCES movie(movie_id),
+	reviewer_id INT FOREIGN KEY REFERENCES reviewer(reviewer_id),
+	reviewer_rating INT,
+	number_of_rating INT
+)
+
+----MOVIE_CAST
+CREATE TABLE movie_cast (
+	actor_id INT FOREIGN KEY REFERENCES actor(actor_id),
+	movie_id INT FOREIGN KEY REFERENCES movie(movie_id),
+	character_role CHAR(30)
+)
