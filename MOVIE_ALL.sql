@@ -38,7 +38,7 @@ CREATE TABLE movie_genres (
 	movie_id INT FOREIGN KEY REFERENCES movie(movie_id),
 	genres_id INT FOREIGN KEY REFERENCES genres(genres_id)
 )
-drop table movie_genres
+
 ----MOVIE_DIRECTOR
 CREATE TABLE movie_director (
 	director_id INT FOREIGN KEY REFERENCES director(director_id),
@@ -211,7 +211,137 @@ VALUES
 (66, 26),
 (67, 27)
 
+----INSERT VALUES MOVIE_DIRECTOR
+INSERT INTO movie_director (director_id)
+VALUES
+(29),
+(30),
+(31),
+(32),
+(33),
+(34),
+(35),
+(36),
+(37),
+(38),
+(39),
+(40),
+(41),
+(42),
+(43),
+(44),
+(45),
+(46),
+(47),
+(48)
 
+----INSERT VALUES REVIEWER TABLE
+INSERT INTO reviewer (reviewer_name)
+VALUES
+  ('Righty Sock'),
+  ('Jack Malvern'),
+  ('Flagrant Baronessa'),
+  ('Alec Shaw'),
+  (''),
+  ('Victor Woeltjen'),
+  ('Simon Wright'),
+  ('Neal Wruck'),
+  ('Paul Monks'),
+  ('Mike Salvati'),
+  (''),
+  ('Wesley S. Walker'),
+  ('Sasha Goldshtein'),
+  ('Josh Cates'),
+  ('Krug Stillo'),
+  ('Scott LeBrun'),
+  ('Hannah Steele'),
+  ('Vincent Cadena'),
+  ('Brandt Sponseller'),
+  ('Richard Adams')
 
+----INSERT VALUES RATING TABLE
+INSERT INTO rating (movie_id, reviewer_id, reviewer_rating, number_of_rating)
+VALUES
+ (40, 1, 8.40, 263575),
+  (41, 2, 7.90, 20207),
+  (42, 3, 8.30, 202778),
+  (43, 4, 8.20, 484746),
+  (44, 5, 7.30, NULL),
+  (45, 6, 8.60, 779489),
+  (46, 7, NULL, 227235),
+  (47, 8, 3.00, 195961),
+  (48, 9, 8.10, 203875),
+  (49, 10, NULL, NULL),
+  (50, 11, 7.00, 862618),
+  (51, 12, 7.70, 830095),
+  (52, 13, 4.00, 642132),
+  (53, 14, 7.70, 81328),
+  (54, 15, NULL, 580301),
+  (55, 16, 8.10, 609451),
+  (56, 17, 8.00, 667758),
+  (57, 18, 8.40, 511613),
+  (58, 19, 6.70, 13091),
+  (59, 20, NULL, NULL),	
+(60, NULL, NULL, NULL),		
+(61, NULL, NULL, NULL),	
+(62, NULL, NULL, NULL),		
+(63, NULL, NULL, NULL),		
+(64, NULL, NULL, NULL),		
+(65, NULL, NULL, NULL),		
+(66, NULL, NULL, NULL),		
+(67, NULL, NULL, NULL)
+		
+
+----INSERT VALUES MOIVE_CAST
+INSERT INTO movie_cast (actor_id, movie_id, character_role)
+VALUES
+	(1, 40, 'John Scottie Ferguson'),
+	(2, 41, 'Miss Giddens'),
+	(3, 42, 'T.E. Lawrence'),
+	(4, 43, 'Michael'),
+	(5, 44, 'Antonio Salieri'),
+	(6, 45, 'Rick Deckard'),
+	(7, 46, 'Alice Harford'),
+	(8, 47, 'McManus'),
+	(9, 48, 'Eddie Adams'),
+	(10, 49, 'Alvy Singer'),
+	(11, 50, 'San'),
+	(12, 51, 'Andy Dufresne'),
+	(13, 52, 'Lester Burnham'),
+	(14, 53, 'Rose DeWitt Bukater'),
+	(15, 54, 'Sean Maguire'),
+	(16, 55, 'Ed'),
+	(17, 56, 'Renton'),
+	(18, 57, 'Elizabeth Darko'),
+	(19, 58, 'Older Jamal'),
+	(20, 59, 'Ripley'),
+	(21, 60, 'Bobby Darin'),
+	(22, 61, 'J.J. Gittes'),
+	(23, 62, 'Alfred Borden'),
+	(24, 63, NULL),
+	(25, 64, NULL),
+	(26, 65, NULL),
+	(27, 66, NULL),
+	(28, 67, NULL),
+	(29, NULL, NULL),
+	(30, NULL, NULL),
+	(31, NULL, NULL),
+	(32, NULL, NULL),
+	(33, NULL, NULL),
+	(34, NULL, NULL),
+	(35, NULL, NULL),
+	(36, NULL, NULL),
+	(37, NULL, NULL),
+	(38, NULL, NULL),
+	(39, NULL, NULL),
+	(40, NULL, NULL),
+	(41, NULL, NULL),
+	(42, NULL, NULL),
+	(43, NULL, NULL),
+	(44, NULL, NULL),
+	(45, NULL, NULL),
+	(46, NULL, NULL),
+	(47, NULL, NULL),
+	(48, NULL, NULL)
 
 select *from movie_genres
