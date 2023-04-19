@@ -384,4 +384,46 @@ INNER JOIN
 rating ON reviewer.reviewer_id = rating.reviewer_id
 WHERE reviewer_rating > 7
 
-SELECT * FROM rating
+--7. From the following tables, write a SQL query to find the movies without any rating. Return movie title.
+SELECT movie_title, reviewer_rating
+FROM movie
+INNER JOIN
+rating ON movie.movie_id = rating.movie_id
+WHERE reviewer_rating IS NULL
+
+--checking null values in reviewer_rating column in rating table
+SELECT  movie_id, reviewer_rating FROM rating WHERE 
+reviewer_rating IS NULL
+
+--counting null values in reviewer_rating column in rating table
+select count(reviewer_rating) from rating
+SELECT movie_id, reviewer_rating from rating where movie_id = 46
+
+SELECT movie_id, movie_title FROM movie where movie_id = 46
+
+--8. From the following table, write a SQL query to find the movies with ID 45 or 47 or 57. Return movie title. 
+SELECT movie_title 
+FROM movie
+WHERE movie_id IN (45, 47, 57)
+
+--9. From the following table, write a SQL query to find the movie titles that contain the 
+--word 'Boogie Nights'. Sort the result-set in ascending order by movie year.
+--Return movie ID, movie title and movie release year.
+SELECT movie_id, movie_title, movie_year
+FROM movie
+WHERE movie_title LIKE '%Boogie Nights%'
+ORDER BY movie_year ASC
+
+--10. From the following table, write a SQL query to find those actors with the first name
+--'Woody' and the last name 'Allen'. Return actor ID
+SELECT actor_id
+FROM actor
+WHERE actor_fname LIKE 'Woody' AND actor_lname LIKE 'Allen'
+
+
+				---SUBQUERIES---
+--1. From the following table, write a SQL query to find the actors who played a 
+--role in the movie 'Michael'. Return all the fields of actor table.
+SELECT * FROM actor WHERE character_role = 'Michael'(
+select character_role from movie_cast
+)
