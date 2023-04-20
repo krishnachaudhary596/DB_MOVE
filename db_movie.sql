@@ -427,3 +427,26 @@ WHERE actor_fname LIKE 'Woody' AND actor_lname LIKE 'Allen'
 SELECT * FROM actor WHERE character_role = 'Michael'(
 select character_role from movie_cast
 )
+
+SELECT *FROM actor
+SELECT *FROM director
+SELECT *FROM genres
+SELECT *FROM movie
+SELECT *FROM movie_cast
+SELECT *FROM movie_director
+SELECT *FROM movie_genres
+SELECT *FROM rating
+SELECT *FROM reviewer
+
+
+--Find all movies that are directed by either Jack Clayton or Christopher Nolan:
+
+SELECT movie_title FROM movie
+INNER JOIN movie_director ON movie.movie_id = movie_director.movie_id
+INNER JOIN director ON movie_director.director_id = director.director_id
+WHERE director_fname = 'Jack' AND director_lname = 'Clayton'
+UNION
+SELECT movie_title FROM movie
+INNER JOIN movie
+
+
