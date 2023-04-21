@@ -450,3 +450,36 @@ SELECT movie_title FROM movie
 INNER JOIN movie
 
 
+--ANSI IS TURNED OFF
+ISNULL = NULL
+--Msg 102, Level 15, State 1, Line 103
+--Incorrect syntax near '='.
+
+NULL = ISNULL
+--Msg 156, Level 15, State 1, Line 108
+--Incorrect syntax near the keyword 'NULL'.
+
+NULL = NULL
+--Msg 156, Level 15, State 1, Line 112
+--Incorrect syntax near the keyword 'NULL'.
+
+ISNULL = ISNULL
+--Msg 102, Level 15, State 1, Line 116
+--Incorrect syntax near '='.
+
+--ANSI IS TURNED ON
+ISNULL = NULL
+--Msg 102, Level 15, State 1, Line 125
+--Incorrect syntax near '='.
+
+NULL = ISNULL
+--Msg 156, Level 15, State 1, Line 129
+--Incorrect syntax near the keyword 'NULL'.
+
+NULL = NULL
+--Msg 156, Level 15, State 1, Line 129
+--Incorrect syntax near the keyword 'NULL'.
+
+ISNULL = ISNULL
+--Msg 102, Level 15, State 1, Line 133
+--Incorrect syntax near '='.
