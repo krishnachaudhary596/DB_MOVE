@@ -396,10 +396,9 @@ SELECT  movie_id, reviewer_rating FROM rating WHERE
 reviewer_rating IS NULL
 
 --counting null values in reviewer_rating column in rating table
-select count(reviewer_rating) from rating
-SELECT movie_id, reviewer_rating from rating where movie_id = 46
+select count(reviewer_rating) AS null_values from rating WHERE reviewer_rating IS NULL	--not giving proper output
 
-SELECT movie_id, movie_title FROM movie where movie_id = 46
+SELECT COUNT(reviewer_rating) FROM rating		--COUNT skips rows with null values
 
 --8. From the following table, write a SQL query to find the movies with ID 45 or 47 or 57. Return movie title. 
 SELECT movie_title 
@@ -439,7 +438,7 @@ SELECT *FROM rating
 SELECT *FROM reviewer
 
 
---Find all movies that are directed by either Jack Clayton or Christopher Nolan:
+--1. Find all movies that are directed by either Jack Clayton or Christopher Nolan:
 
 SELECT movie_title FROM movie
 INNER JOIN movie_director ON movie.movie_id = movie_director.movie_id
@@ -447,11 +446,44 @@ INNER JOIN director ON movie_director.director_id = director.director_id
 WHERE director_fname = 'Jack' AND director_lname = 'Clayton'
 UNION
 SELECT movie_title FROM movie
-INNER JOIN movie
 
 
---ANSI IS TURNED OFF
-ISNULL = NULL
+--2. Find all genres that are associated with either the movie "Vertigo" or "The Innocents":
+select *from movie_genres
+select *from genres
+select *from movie
+
+SELECT genres_title FROM genres
+INNER JOIN movie_genres ON movie_genres.genres_id = genres.genres_id
+INNER JOIN movie ON movie_genres.movie_id = movie.movie_id
+WHERE movie_title = 'Vertigo' 
+UNION
+SELECT genres_title FROM genres
+INNER JOIN movie_genres ON movie_genres.genres_id = genres.genres_id
+INNER JOIN movie ON movie_genres.movie_id = movie.movie_id
+WHERE movie_title = 'The Innocents'
+
+--3. Find all actors who appear in both the movies "Vertigo" and "The Innocents":
+select *from actor
+select *from movie_cast
+select *from movie
+
+SELECT movie_title, character_role, actor_fname, actor_lname FROM actor
+INNER JOIN movie_cast ON movie_cast.actor_id = actor.actor_id
+INNER JOIN movie ON movie.movie_id = movie_cast.movie_id
+WHERE movie_title = 'Vertigo'
+INTERSECT
+SELECT movie_title, character_role, actor_fname, actor_lname FROM actor
+INNER JOIN movie_cast ON movie_cast.actor_id = actor.actor_id
+INNER JOIN movie ON movie.movie_id = movie_cast.movie_id
+WHERE movie_title = 'The Innocents'
+
+
+--4. Find all movies that either have a rating greater than 8 or have been reviewed by a reviewer named "Roger Ebert":
+select *from movie
+select *from rating
+select *from reviewer
+
 --Msg 102, Level 15, State 1, Line 103
 --Incorrect syntax near '='.
 
@@ -483,3 +515,5 @@ NULL = NULL
 ISNULL = ISNULL
 --Msg 102, Level 15, State 1, Line 133
 --Incorrect syntax near '='.
+
+
