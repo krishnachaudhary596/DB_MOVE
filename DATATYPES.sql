@@ -104,16 +104,17 @@ INSERT INTO BinaryStringTable VALUES
 --OTHER DATATYPES TABLE:
 	--CREATING CURSOR
 	DECLARE my_cursor CURSOR FOR 
-	SELECT * FROM NumericTable;
-	
+	SELECT * FROM NumericTable
+
+	--Not WOrking From Here
 	--FETCHING ROWS
-	DECLARE @col1 VARCHAR(50), @col2 INT;
+	DECLARE @col1 VARCHAR(50), @col2 IN
 
 	FETCH NEXT FROM my_cursor INTO @col1, @col2;
 	
 	--CLOSING CURSOR
-	CLOSE my_cursor;
-	DEALLOCATE my_cursor;
+	CLOSE my_cursor
+	DEALLOCATE my_cursor
 
 --SET OPPERATORS:
 CREATE TABLE MyTable (

@@ -1,34 +1,32 @@
-USE DBJOINS
+USE joins
 
 --1. Create Student table- Add Student id, student name, roll number, Class, division
-CREATE TABLE Student (
-  Student_ID INT PRIMARY KEY,
-  Student_Name VARCHAR(50),
-  Roll_Number INT,
-  Class_ID INT,
-  Division_ID INT,
-  FOREIGN KEY (Class_ID) REFERENCES Class(Class_ID),
-  FOREIGN KEY (Division_ID) REFERENCES Division(Division_ID)
+CREATE TABLE STUDENT (
+	Student_ID INT PRIMARY KEY,
+	Student_Name VARCHAR(30),
+	Roll_Number INT,
+	Class VARCHAR(30),
+	Division CHAR(1)
 )
 
 --Add 15 students’ records.
-INSERT INTO Student (Student_ID, Student_Name, Roll_Number, Class_ID, Division_ID) 
-VALUES 
-(1, 'John Doe', 101, 1, 1),
-(2, 'Jane Smith', 102, 1, 2),
-(3, 'Bob Johnson', 103, 2, 1),
-(4, 'Sara Lee', 104, 2, 2),
-(5, 'Tom White', 105, 3, 3),
-(6, 'Mary Brown', 106, 3, 1),
-(7, 'David Kim', 107, 4, 2),
-(8, 'Emily Jones', 108, 4, 3),
-(9, 'George Park', 109, 5, 4),
-(10, 'Anna Lee', 110, 5, 2),
-(11, 'Mark Davis', 111, 6, 1),
-(12, 'Lisa Chen', 112, 6, 3),
-(13, 'Chris Lee', 113, 7, 1),
-(14, 'Jessica Huang', 114, 7, 2),
-(15, 'Peter Chang', 115, 8, 4)
+INSERT INTO Student (Student_ID, Student_Name, Roll_Number, Class, Division)
+VALUES
+(1, 'John', 101, 8, 'A'),
+(2, 'Jane', 102, 8, 'B'),
+(3, 'Tom', 103, 7, 'A'),
+(4, 'Sara', 104, 7, 'B'),
+(5, 'Bob', 105, 6, 'C'),
+(6, 'Lisa', 106, 6, 'D'),
+(7, 'Mike', 107, 5, 'A'),
+(8, 'Rachel', 108, 5, 'B'),
+(9, 'Chris', 109, 4, 'C'),
+(10, 'Kelly', 110, 4, 'D'),
+(11, 'Mark', 111, 3, 'A'),
+(12, 'Emily', 112, 3, 'B'),
+(13, 'Jack', 113, 2, 'C'),
+(14, 'Lena', 114, 2, 'D'),
+(15, 'Eric', 115, 1, 'A')
 
 --2. Create Class table- Add class id , class name
 CREATE TABLE Class (
@@ -63,36 +61,20 @@ VALUES
 (4, 'D')
 
 --4. Write a query to select roll number, student name, and class: Without Join
+SELECT Roll_Number, Student_Name, Class
+FROM STUDENT
+
+--4. Write a query to select roll number, student name, and class: With Join
 SELECT Roll_Number, Student_Name, Class_Name
 FROM Student
-INNER JOIN Class ON Student.Class_ID = Class.Class_ID
+INNER JOIN Class ON Student.Class = Class.Class_ID
 
 --5. Write a query to select roll number, student name, and division: Without Join
-SELECT Roll_Number, Student_Name, Division_Name
-FROM Student
-INNER JOIN Division ON Student.Division_ID = Division.Division_ID
+SELECT Roll_Number, Student_Name, Division
+FROM STUDENT
 
 --5. Write a query to select roll number, student name, and division: With Join
-SELECT Roll_Number, Student_Name, Division_Name
+SELECT Roll_Number, Student_Name, Division
 FROM STUDENT
 INNER JOIN Division ON Division.Division_ID = STUDENT.Student_ID
 
---6. Writing a query to select students who are not enrolled in any class:
-SELECT Student_Name
-FROM Student
-WHERE Class_ID IS NULL
-
---7. Writing a query to select students who are not enrolled in any division:
-SELECT Student_Name
-FROM Student
-WHERE Division_ID IS NULL
-
---8. Writing a query to select all students and all classes:
-SELECT Student_Name, Class_Name
-FROM Student
-FULL JOIN Class ON Student.Class_ID = Class.Class_ID
-
---9. Write query to select all students and all divisions.
-SELECT Student_Name, Division_Name
-FROM Student
-FULL JOIN Division ON Student.Division_ID = Division.Division_ID
